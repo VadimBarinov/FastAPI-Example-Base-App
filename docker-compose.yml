@@ -1,4 +1,21 @@
 services:
+  api:
+    build: .
+    container_name: fastapi_example_app
+    ports:
+      - 8080:8080
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+    restart: always
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:latest
     container_name: postgres_example_api
