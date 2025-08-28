@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Mapped,mapped_column
 
-from core.models import Base
+from . import Base
+from .mixins.int_id_pk import IntIdPkMixin
 
 
-class User(Base):
+class User(IntIdPkMixin, Base):
     username: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
