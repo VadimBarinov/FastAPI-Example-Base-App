@@ -16,7 +16,7 @@ class UserCRUD(BaseCRUD):
             cls,
             session: AsyncSession,
     ) -> Sequence[User]:
-        # Statement
+        # statement
         stmt = select(cls.model).order_by(cls.model.id)
         result = await session.scalars(stmt)
         return result.all()

@@ -34,7 +34,6 @@ class DatabaseConfig(BaseModel):
     max_overflow: int = 50
     pool_size: int = 10
 
-    # Правила наименования для SQLAlchemy
     naming_convention: dict[str, str] = {
         "ix": "ix_%(column_0_label)s",
         "uq": "uq_%(table_name)s_%(column_0_N_name)s",
@@ -47,7 +46,6 @@ class DatabaseConfig(BaseModel):
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=(BASE_URL / ".env.template", BASE_URL / ".env"),
-        # Не важен регистр
         case_sensitive=False,
         env_nested_delimiter="__",
         env_prefix="APP_CONFIG__",
